@@ -1,6 +1,6 @@
 "use strict";
 
-var formatEthereumAddress = require("./format-ethereum-address");
+var formatVaporyAddress = require("./format-vapory-address");
 var hex = require("./hex");
 var prefixHex = require("./prefix-hex");
 var formatInt256 = require("./format-int256");
@@ -13,7 +13,7 @@ function formatAbiRawDecodedData(inputType, decodedData) {
     });
   }
   if (inputType.startsWith("address")) {
-    return formatEthereumAddress(decodedData.toString("hex"));
+    return formatVaporyAddress(decodedData.toString("hex"));
   } else if (inputType === "bytes") {
     return prefixHex(decodedData.toString("hex"));
   } else if (inputType.startsWith("bytes")) {

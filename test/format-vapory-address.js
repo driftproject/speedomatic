@@ -3,12 +3,12 @@
 "use strict";
 
 var assert = require("chai").assert;
-var formatEthereumAddress = require("../src/format-ethereum-address");
+var formatVaporyAddress = require("../src/format-vapory-address");
 
-describe("formatEthereumAddress", function () {
+describe("formatVaporyAddress", function () {
   var test = function (t) {
     it(t.address + " -> " + t.expected, function () {
-      assert.deepEqual(formatEthereumAddress(t.address), t.expected);
+      assert.deepEqual(formatVaporyAddress(t.address), t.expected);
     });
   };
   test({

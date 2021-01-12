@@ -3,11 +3,11 @@
 var prefixHex = require("./prefix-hex");
 var strip0xPrefix = require("./strip-0x-prefix");
 
-function formatEthereumAddress(addr) {
+function formatVaporyAddress(addr) {
   if (addr == null) return addr;
   if (Array.isArray(addr)) {
     for (var i = 0, n = addr.length; i < n; ++i) {
-      addr[i] = formatEthereumAddress(addr[i]);
+      addr[i] = formatVaporyAddress(addr[i]);
     }
     return addr;
   }
@@ -23,4 +23,4 @@ function formatEthereumAddress(addr) {
   }
 }
 
-module.exports = formatEthereumAddress;
+module.exports = formatVaporyAddress;

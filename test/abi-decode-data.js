@@ -3,7 +3,7 @@
 "use strict";
 
 var assert = require("chai").assert;
-var rawEncode = require("ethereumjs-abi").rawEncode;
+var rawEncode = require("vaporyjs-abi").rawEncode;
 var abiDecodeData = require("../src/abi-decode-data");
 
 var jsonToEncode = JSON.stringify({

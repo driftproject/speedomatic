@@ -13554,7 +13554,7 @@ module.exports = require('./lib/index.js')
 
 },{"./lib/index.js":34}],34:[function(require,module,exports){
 (function (Buffer){
-const utils = require('ethereumjs-util')
+const utils = require('vaporyjs-util')
 const BN = require('bn.js')
 
 var ABI = function () {
@@ -14064,7 +14064,7 @@ function isNumeric (c) {
   return (c >= '0') && (c <= '9')
 }
 
-// For a "documentation" refer to https://github.com/ethereum/serpent/blob/develop/preprocess.cpp
+// For a "documentation" refer to https://github.com/vaporyco/serpent/blob/develop/preprocess.cpp
 ABI.fromSerpent = function (sig) {
   var ret = []
   for (var i = 0; i < sig.length; i++) {
@@ -14113,7 +14113,7 @@ ABI.toSerpent = function (types) {
 module.exports = ABI
 
 }).call(this,require("buffer").Buffer)
-},{"bn.js":9,"buffer":13,"ethereumjs-util":35}],35:[function(require,module,exports){
+},{"bn.js":9,"buffer":13,"vaporyjs-util":35}],35:[function(require,module,exports){
 (function (Buffer){
 const SHA3 = require('keccakjs')
 const secp256k1 = require('secp256k1')
@@ -14177,7 +14177,7 @@ exports.SHA3_RLP = new Buffer(exports.SHA3_RLP_S, 'hex')
 exports.BN = BN
 
 /**
- * [`rlp`](https://github.com/ethereumjs/rlp)
+ * [`rlp`](https://github.com/vaporyjs/rlp)
  * @var {Function}
  */
 exports.rlp = rlp
@@ -14424,7 +14424,7 @@ exports.isValidPrivate = function (privateKey) {
 
 /**
  * Checks if the public key satisfies the rules of the curve secp256k1
- * and the requirements of Ethereum.
+ * and the requirements of Vapory.
  * @method isValidPublic
  * @param {Buffer} publicKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
@@ -14444,8 +14444,8 @@ exports.isValidPublic = function (publicKey, sanitize) {
 }
 
 /**
- * Returns the ethereum address of a given public key.
- * Accepts "Ethereum public keys" and SEC1 encoded keys.
+ * Returns the vapory address of a given public key.
+ * Accepts "Vapory public keys" and SEC1 encoded keys.
  * @method publicToAddress
  * @param {Buffer} pubKey The two points of an uncompressed key, unless sanitize is enabled
  * @param {Boolean} [sanitize=false] Accept public keys in other formats
@@ -14462,7 +14462,7 @@ exports.pubToAddress = exports.publicToAddress = function (pubKey, sanitize) {
 }
 
 /**
- * Returns the ethereum public key of a given private key
+ * Returns the vapory public key of a given private key
  * @method privateToPublic
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -14474,7 +14474,7 @@ var privateToPublic = exports.privateToPublic = function (privateKey) {
 }
 
 /**
- * Converts a public key to the Ethereum format.
+ * Converts a public key to the Vapory format.
  * @method importPublic
  * @param {Buffer} publicKey
  * @return {Buffer}
@@ -14524,7 +14524,7 @@ exports.ecrecover = function (msgHash, v, r, s) {
 }
 
 /**
- * Convert signature parameters into the format of `eth_sign` RPC method
+ * Convert signature parameters into the format of `vap_sign` RPC method
  * @method toRpcSig
  * @param {Number} v
  * @param {Buffer} r
@@ -14532,13 +14532,13 @@ exports.ecrecover = function (msgHash, v, r, s) {
  * @return {String} sig
  */
 exports.toRpcSig = function (v, r, s) {
-  // geth (and the RPC eth_sign method) uses the 65 byte format used by Bitcoin
-  // FIXME: this might change in the future - https://github.com/ethereum/go-ethereum/issues/2053
+  // gvap (and the RPC vap_sign method) uses the 65 byte format used by Bitcoin
+  // FIXME: this might change in the future - https://github.com/vaporyco/go-vapory/issues/2053
   return exports.bufferToHex(Buffer.concat([ r, s, exports.toBuffer(v - 27) ]))
 }
 
 /**
- * Convert signature format of the `eth_sign` RPC method to signature parameters
+ * Convert signature format of the `vap_sign` RPC method to signature parameters
  * @method fromRpcSig
  * @param {String} sig
  * @return {Object}
@@ -14547,7 +14547,7 @@ exports.fromRpcSig = function (sig) {
   sig = exports.toBuffer(sig)
 
   var v = sig[64]
-  // support both versions of `eth_sign` responses
+  // support both versions of `vap_sign` responses
   if (v < 27) {
     v += 27
   }
@@ -14560,7 +14560,7 @@ exports.fromRpcSig = function (sig) {
 }
 
 /**
- * Returns the ethereum address of a given private key
+ * Returns the vapory address of a given private key
  * @method privateToAddress
  * @param {Buffer} privateKey A private key must be 256 bits wide
  * @return {Buffer}
@@ -20306,7 +20306,7 @@ module.exports = RIPEMD160
 const assert = require('assert')
 const Buffer = require('safe-buffer').Buffer
 /**
- * RLP Encoding based on: https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP
+ * RLP Encoding based on: https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP
  * This function takes in a data, convert it to buffer if not, and a length for recursion
  *
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
@@ -20350,7 +20350,7 @@ function encodeLength (len, offset) {
 }
 
 /**
- * RLP Decoding based on: {@link https://github.com/ethereum/wiki/wiki/%5BEnglish%5D-RLP|RLP}
+ * RLP Decoding based on: {@link https://github.com/vaporyco/wiki/wiki/%5BEnglish%5D-RLP|RLP}
  * @param {Buffer,String,Integer,Array} data - will be converted to buffer
  * @returns {Array} - returns decode Array of Buffers containg the original message
  **/
@@ -22779,7 +22779,7 @@ module.exports = abiDecodeBytes;
 (function (Buffer){
 "use strict";
 
-var rawDecode = require("ethereumjs-abi").rawDecode;
+var rawDecode = require("vaporyjs-abi").rawDecode;
 var formatAbiRawDecodedDataArray = require("./format-abi-raw-decoded-data-array");
 var strip0xPrefix = require("./strip-0x-prefix");
 
@@ -22796,7 +22796,7 @@ function abiDecodeData(inputs, abiEncodedData) {
 module.exports = abiDecodeData;
 
 }).call(this,require("buffer").Buffer)
-},{"./format-abi-raw-decoded-data-array":114,"./strip-0x-prefix":126,"buffer":13,"ethereumjs-abi":33}],99:[function(require,module,exports){
+},{"./format-abi-raw-decoded-data-array":114,"./strip-0x-prefix":126,"buffer":13,"vaporyjs-abi":33}],99:[function(require,module,exports){
 "use strict";
 
 var abiDecodeData = require("./abi-decode-data");
@@ -22825,7 +22825,7 @@ module.exports = abiDecodeShortStringAsInt256;
 },{"./remove-trailing-zeros":124,"./strip-0x-prefix":126,"buffer":13}],101:[function(require,module,exports){
 "use strict";
 
-var rawEncode = require("ethereumjs-abi").rawEncode;
+var rawEncode = require("vaporyjs-abi").rawEncode;
 var removeTrailingZeros = require("./remove-trailing-zeros");
 
 // convert bytes to ABI format
@@ -22837,24 +22837,24 @@ function abiEncodeBytes(bytesToEncode, isPadded) {
 
 module.exports = abiEncodeBytes;
 
-},{"./remove-trailing-zeros":124,"ethereumjs-abi":33}],102:[function(require,module,exports){
+},{"./remove-trailing-zeros":124,"vaporyjs-abi":33}],102:[function(require,module,exports){
 "use strict";
 
-var ethereumjsAbi = require("ethereumjs-abi");
+var vaporyjsAbi = require("vaporyjs-abi");
 
 // ABI-encode the 'data' field in a transaction payload
 function abiEncodeData(payload, format) {
-  var abiEncodedData = ethereumjsAbi.rawEncode(payload.signature || [], payload.params);
+  var abiEncodedData = vaporyjsAbi.rawEncode(payload.signature || [], payload.params);
   if (format === "hex") return "0x" + abiEncodedData.toString("hex");
   return abiEncodedData;
 }
 
 module.exports = abiEncodeData;
 
-},{"ethereumjs-abi":33}],103:[function(require,module,exports){
+},{"vaporyjs-abi":33}],103:[function(require,module,exports){
 "use strict";
 
-var rawEncode = require("ethereumjs-abi").rawEncode;
+var rawEncode = require("vaporyjs-abi").rawEncode;
 
 function abiEncodeInt256(value) {
   return rawEncode(["int256"], [value]).toString("hex");
@@ -22862,7 +22862,7 @@ function abiEncodeInt256(value) {
 
 module.exports = abiEncodeInt256;
 
-},{"ethereumjs-abi":33}],104:[function(require,module,exports){
+},{"vaporyjs-abi":33}],104:[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -22882,20 +22882,20 @@ module.exports = abiEncodeShortStringAsInt256;
 (function (Buffer){
 "use strict";
 
-var ethereumjsAbi = require("ethereumjs-abi");
+var vaporyjsAbi = require("vaporyjs-abi");
 var abiEncodeData = require("./abi-encode-data");
 var prefixHex = require("./prefix-hex");
 
 // ABI-encode the 'data' field in a transaction payload, with method ID prefix
 function abiEncodeTransactionPayload(payload) {
   payload.signature = payload.signature || [];
-  return prefixHex(Buffer.concat([ethereumjsAbi.methodID(payload.name, payload.signature), abiEncodeData(payload)]).toString("hex"));
+  return prefixHex(Buffer.concat([vaporyjsAbi.methodID(payload.name, payload.signature), abiEncodeData(payload)]).toString("hex"));
 }
 
 module.exports = abiEncodeTransactionPayload;
 
 }).call(this,require("buffer").Buffer)
-},{"./abi-encode-data":102,"./prefix-hex":123,"buffer":13,"ethereumjs-abi":33}],106:[function(require,module,exports){
+},{"./abi-encode-data":102,"./prefix-hex":123,"buffer":13,"vaporyjs-abi":33}],106:[function(require,module,exports){
 "use strict";
 
 var BigNumber = require("bignumber.js");
@@ -23131,7 +23131,7 @@ module.exports = formatAbiRawDecodedDataArray;
 },{"./format-abi-raw-decoded-data":115}],115:[function(require,module,exports){
 "use strict";
 
-var formatEthereumAddress = require("./format-ethereum-address");
+var formatVaporyAddress = require("./format-vapory-address");
 var hex = require("./hex");
 var prefixHex = require("./prefix-hex");
 var formatInt256 = require("./format-int256");
@@ -23144,7 +23144,7 @@ function formatAbiRawDecodedData(inputType, decodedData) {
     });
   }
   if (inputType.startsWith("address")) {
-    return formatEthereumAddress(decodedData.toString("hex"));
+    return formatVaporyAddress(decodedData.toString("hex"));
   } else if (inputType === "bytes") {
     return prefixHex(decodedData.toString("hex"));
   } else if (inputType.startsWith("bytes")) {
@@ -23157,17 +23157,17 @@ function formatAbiRawDecodedData(inputType, decodedData) {
 
 module.exports = formatAbiRawDecodedData;
 
-},{"./format-ethereum-address":116,"./format-int256":117,"./hex":118,"./prefix-hex":123}],116:[function(require,module,exports){
+},{"./format-vapory-address":116,"./format-int256":117,"./hex":118,"./prefix-hex":123}],116:[function(require,module,exports){
 "use strict";
 
 var prefixHex = require("./prefix-hex");
 var strip0xPrefix = require("./strip-0x-prefix");
 
-function formatEthereumAddress(addr) {
+function formatVaporyAddress(addr) {
   if (addr == null) return addr;
   if (Array.isArray(addr)) {
     for (var i = 0, n = addr.length; i < n; ++i) {
-      addr[i] = formatEthereumAddress(addr[i]);
+      addr[i] = formatVaporyAddress(addr[i]);
     }
     return addr;
   }
@@ -23183,7 +23183,7 @@ function formatEthereumAddress(addr) {
   }
 }
 
-module.exports = formatEthereumAddress;
+module.exports = formatVaporyAddress;
 
 },{"./prefix-hex":123,"./strip-0x-prefix":126}],117:[function(require,module,exports){
 (function (Buffer){
@@ -23287,7 +23287,7 @@ module.exports = {
   hex: require("./hex"),
   isHex: require("./is-hex"),
   formatInt256: require("./format-int256"),
-  formatEthereumAddress: require("./format-ethereum-address"),
+  formatVaporyAddress: require("./format-vapory-address"),
   strip0xPrefix: require("./strip-0x-prefix"),
   prefixHex: require("./prefix-hex"),
   bignum: require("./bignum"),
@@ -23308,7 +23308,7 @@ module.exports = {
   serialize: require("./serialize")
 };
 
-},{"./abi-decode-bytes":97,"./abi-decode-data":98,"./abi-decode-rpc-response":99,"./abi-decode-short-string-as-int256":100,"./abi-encode-bytes":101,"./abi-encode-data":102,"./abi-encode-int256":103,"./abi-encode-short-string-as-int256":104,"./abi-encode-transaction-payload":105,"./bignum":106,"./byte-array-to-hex-string":107,"./byte-array-to-utf8-string":108,"./constants":110,"./encode-number-as-base10-string":111,"./encode-number-as-js-number":112,"./fix":113,"./format-abi-raw-decoded-data":115,"./format-abi-raw-decoded-data-array":114,"./format-ethereum-address":116,"./format-int256":117,"./hex":118,"./is-hex":120,"./pad-left":121,"./pad-right":122,"./prefix-hex":123,"./serialize":125,"./strip-0x-prefix":126,"./unfix":128,"./unfix-signed":127,"./unfork":129,"./unroll-array":130,"bignumber.js":7}],120:[function(require,module,exports){
+},{"./abi-decode-bytes":97,"./abi-decode-data":98,"./abi-decode-rpc-response":99,"./abi-decode-short-string-as-int256":100,"./abi-encode-bytes":101,"./abi-encode-data":102,"./abi-encode-int256":103,"./abi-encode-short-string-as-int256":104,"./abi-encode-transaction-payload":105,"./bignum":106,"./byte-array-to-hex-string":107,"./byte-array-to-utf8-string":108,"./constants":110,"./encode-number-as-base10-string":111,"./encode-number-as-js-number":112,"./fix":113,"./format-abi-raw-decoded-data":115,"./format-abi-raw-decoded-data-array":114,"./format-vapory-address":116,"./format-int256":117,"./hex":118,"./is-hex":120,"./pad-left":121,"./pad-right":122,"./prefix-hex":123,"./serialize":125,"./strip-0x-prefix":126,"./unfix":128,"./unfix-signed":127,"./unfork":129,"./unroll-array":130,"bignumber.js":7}],120:[function(require,module,exports){
 "use strict";
 
 function isHex(str) {

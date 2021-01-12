@@ -1,6 +1,6 @@
 "use strict";
 
-var rawDecode = require("ethereumjs-abi").rawDecode;
+var rawDecode = require("vaporyjs-abi").rawDecode;
 var formatAbiRawDecodedDataArray = require("./format-abi-raw-decoded-data-array");
 var strip0xPrefix = require("./strip-0x-prefix");
 

@@ -18,7 +18,7 @@ module.exports = {
   hex: require("./hex"),
   isHex: require("./is-hex"),
   formatInt256: require("./format-int256"),
-  formatEthereumAddress: require("./format-ethereum-address"),
+  formatVaporyAddress: require("./format-vapory-address"),
   strip0xPrefix: require("./strip-0x-prefix"),
   prefixHex: require("./prefix-hex"),
   bignum: require("./bignum"),

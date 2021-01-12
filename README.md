@@ -6,7 +6,7 @@
 
 Grab bag of utility functions for formatting and ABI encoding/decoding.
 
-*Note: this repository was previously named augur-abi.  If you're looking for a generic ABI encoder/decoder, you should be using [ethereumjs-abi](https://github.com/ethereumjs/ethereumjs-abi) instead!*
+*Note: this repository was previously named augur-abi.  If you're looking for a generic ABI encoder/decoder, you should be using [vaporyjs-abi](https://github.com/vaporyjs/vaporyjs-abi) instead!*
 
 ## Usage
 

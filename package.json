@@ -1,5 +1,6 @@
 {
-  "name": "speedomatic",
+  "name": "@volut/speedomatic",
+  "namespace": "volut",
   "version": "2.1.5",
   "description": "Grab bag of formatting and ABI encoding/decoding functions",
   "author": "The Augur Developers <team@augur.net>",
@@ -18,15 +19,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AugurProject/speedomatic.git"
+    "url": "git+https://github.com/volut/speedomatic.git"
   },
   "bugs": {
-    "url": "https://github.com/AugurProject/speedomatic/issues"
+    "url": "https://github.com/volut/speedomatic/issues"
   },
-  "homepage": "https://github.com/AugurProject/speedomatic#readme",
+  "homepage": "https://github.com/volut/speedomatic#readme",
   "dependencies": {
     "bignumber.js": "6.0.0",
-    "ethereumjs-abi": "0.6.5"
+    "vaporyjs-abi": "0.6.6"
   },
   "devDependencies": {
     "@types/bignumber.js": "4.0.3",

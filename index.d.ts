@@ -42,7 +42,7 @@ export function unfork(forked: Int256|number, prefix?: boolean|null): Int256;
 export function hex(n: RidiculouslyFlexibleInput, isWrapped?: boolean|null): string;
 export function isHex(str: any): boolean;
 export function formatInt256(s?: Buffer|string|null|Array<Buffer|string|null>): Int256;
-export function formatEthereumAddress(addr: string|Array<string>): Address;
+export function formatVaporyAddress(addr: string|Array<string>): Address;
 export function strip0xPrefix(str: string): string;
 export function prefixHex(n: string|number|BigNumber): string;
 export function bignum(n: RidiculouslyFlexibleInput, encoding?: string|null, isWrapped?: boolean|null): RidiculouslyFlexibleOutput;

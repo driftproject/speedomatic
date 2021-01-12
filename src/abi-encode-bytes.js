@@ -1,6 +1,6 @@
 "use strict";
 
-var rawEncode = require("ethereumjs-abi").rawEncode;
+var rawEncode = require("vaporyjs-abi").rawEncode;
 var removeTrailingZeros = require("./remove-trailing-zeros");
 
 // convert bytes to ABI format
